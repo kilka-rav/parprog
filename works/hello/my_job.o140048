@@ -1,0 +1,26 @@
+Before MPI_INIT
+Before MPI_INIT
+Before MPI_INIT
+parallel_section
+Communicator_size = 3
+my_rank = 0
+parallel_section
+Communicator_size = 3
+my_rank = 2
+parallel_section
+Communicator_size = 3
+my_rank = 1
+After MPI_FINALIZE
+After MPI_FINALIZE
+After MPI_FINALIZE
+-------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code.. Per user-direction, the job has been aborted.
+-------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[22742,1],0]
+  Exit code:    19
+--------------------------------------------------------------------------

@@ -1,0 +1,16 @@
+Before MPI_INIT
+Before MPI_INIT
+Before MPI_INIT
+Before MPI_INIT
+parallel_section
+Communicator_size = 4
+my_rank = 2
+parallel_section
+Communicator_size = 4
+my_rank = 3
+parallel_section
+Communicator_size = 4
+my_rank = 1
+parallel_section
+Communicator_size = 4
+my_rank = 0
