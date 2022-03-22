@@ -4,10 +4,27 @@
 
 #include "long.h"
 
-//#include <mpi.h>
+#include <mpi.h>
 
 #define Error(string) fprintf(stderr, "%s\n", string)
 
+
+typedef struct Numbers {
+	int id;
+	int num_proc;
+	Long* res;
+} Numbers;
+
+void Numbers_init(Numbers* t, Long* result, int my_id, int commsize) {
+	t->id = my_id;
+	t->res = result;
+	t->num_proc = commsize;
+}
+
+void my_print(Numbers* t) {
+	printf("id = %d\tnum_proc = %d\t", t->id, t->num_proc);
+	print(t->res);
+}
 
 double check_input(int argc, char** argv) {
 	if ( argc != 2 ) {
@@ -40,19 +57,29 @@ int count_accuracy(int order) {
 	exit(-2);
 }
 
+int factorial(int n) {
+	int reply = 1;
+	while( n > 1 ) {
+		reply *= n;
+		n--;
+	}
+}
 
-void count_2(Long* result, int begin, int end, int order) {
-	int cur = begin;
-	int i;
+void count_2(Long* result, int begin, int end, int order, int id, int num_proc) {
+	int cur = begin + id;
+	int i, j;
 	Long l1;
 	init(&l1, 0, order);
-	divide(cur, &l1);
-	for(i = begin; i <= end; ++i) {
+	divide(factorial(cur), &l1);
+	for(i = begin + id; i <= end; i += num_proc) {
 		//printf("cur = %d\n", i);
 		//print(&l1);
 		add(result, &l1, result);
-		cur++;
-		divide_long(cur, &l1);
+		for(j = 0; j < num_proc; ++j) {
+			cur++;
+			divide_long(cur, &l1);
+		}
+			
 	}
 	//printf("exit foffrfro\n");
 	clear(&l1);
@@ -79,19 +106,64 @@ void count(Long* result, int begin, int end, int order) { //Interesting solution
 	clear(&l1);
 }	
 */		
+
+void transform(Long* result, int rank, MPI_Status status) {
+	Long res1, res2, res3;
+	int tag = 7779;
+	init(&res1, 0, result->size);
+	init(&res2, 0, result->size);
+	init(&res3, 0, result->size);
+	if ( rank == 0 ) {
+		MPI_Recv(res1.digits, res1.size, MPI_INT, 1, tag, MPI_COMM_WORLD, &status);
+		MPI_Recv(res2.digits, res2.size, MPI_INT, 2, tag, MPI_COMM_WORLD, &status);
+		MPI_Recv(res3.digits, res3.size, MPI_INT, 3, tag, MPI_COMM_WORLD, &status);	
+	}
+	else {
+		MPI_Send(result->digits, result->size, MPI_INT, 0, tag, MPI_COMM_WORLD);
+	}
+	if ( rank == 0 ) { 
+		add(result, &res1, result);
+		add(result, &res2, result);
+		add(result, &res3, result);
+		add_one(result);
+		add_one(result);
+		printf("exp = ");
+		print(result);
+	}
+	clear(&res1);
+	clear(&res2);
+	clear(&res3);
+}
+		
+
 int main(int argc, char** argv) {
 	int p = check_input(argc, argv);
 	int N = count_accuracy(p);	//До какога члена нужно считать раложение
-	//printf("Number of Teulors = %d\n", N);
+	int commsize, rank;
 	Long result;
 	p *= AMENDMENT;
-	//printf("WORK_count\n");
-	init(&result, 2, p);
+	MPI_Status status;
+	MPI_Init(&argc, &argv);
+	MPI_Comm_size(MPI_COMM_WORLD, &commsize);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	Numbers t;
+	init(&result, 0, p);
+	Numbers_init(&t, &result, rank, commsize);
+	//init(&result, 2, p);
+	
 	//printf("size = %d\n Number Teulor = %d\n", result.size, N);
-	count_2(&result, 2, N, p);
+	count_2(&result, 2, N, p, rank, commsize);
 	//printf("work\nsize = %d\nreal_size = %d\n", result.size, p);
-	print(&result);
+	//print(&result);
+	//my_print(&t);
+	if ( commsize == 4 ) {
+		transform(&result, rank, status);
+	}
+	else {
+		my_print(&t);
+	}
 	clear(&result);
+	MPI_Finalize();
 	return 0;
 }
 	
