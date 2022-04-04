@@ -12,8 +12,11 @@ double end_x = 1.0;
 double begin_t = 0.0;
 double end_t = 1.0;
 
+double a = 2.0;
 //equation dU/dt + 2dU/dx = x + t
+
 //initial conditions dU/dx(x = 0, t) = e ^ (-t), dU/dt(x, t = 0) = cos(pi * x)
+
 
 typedef struct _Data {
 	int M;
@@ -83,10 +86,10 @@ void init_grid(Data* t, int M, int T) {
 
 void print_grid(Data* t) {
 	int i, j;
-	ERROR("print grid");
+	//ERROR("print grid");
 	for(i = 0; i < t->M; ++i) {
 		for(j = 0; j < t->T; ++j) {
-			printf("%lf ", t->arr[i][j]);
+			printf("(i = %d, j = %d) %lf ", i, j, t->arr[i][j]);
 		}
 		printf("\n");
 	}
@@ -100,7 +103,16 @@ void clear_grid(Data* t) {
 	free(t->arr);
 }
 
-void solution(Data* t) {
-
-
+void solution(Data* t, double h, double tau) {		//calculate right_up
+	int i, j;
+	double l_up, l_down, r_down;
+	for(i = t->M - 2; i >= 0; i--) {
+		for(j = 1; j < t->T; ++j) {
+			printf("i = %d, j = %d\n", i, j);
+			l_up = t->arr[i][j - 1];
+			l_down = t->arr[i + 1][j - 1];
+			r_down = t->arr[i + 1][j];
+			t->arr[i][j] = ( 2 * h * tau ) / ( h + a * tau ) * ( function((i - 0.5) * tau, (j - 0.5) * h) ) - ( r_down - l_down - l_up ) / ( 2 * tau ) - a * ( l_up - l_down - r_down ) / ( 2 * h);
+		}
+	}
 }

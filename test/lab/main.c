@@ -11,7 +11,8 @@ int main(int argc, char** argv) {
 	Data grid;
 	init_grid(&grid, M_step, T_step);
 	init_conditions(&grid, m, t);
-	solution(&grid);
+	print_grid(&grid);
+	solution(&grid, m, t);
 	print_grid(&grid);
 	clear_grid(&grid);
 	printf("%lf %lf\n", m, t);
