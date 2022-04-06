@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 	else {
 		multi_solution(&grid, m, t, rank, commsize, status);
 	}
-	//if ( rank == 0 ) {
+	//if ( rank == 0 ) {		//IF you want to see result, clear this commentary
 	//	print_grid(&grid, rank);
 	//}
 	double end_time = MPI_Wtime();
