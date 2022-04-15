@@ -5,5 +5,5 @@
 #PBS -q batch
 
 cd $PBS_O_WORKDIR
-mpirun --hostfile $PBS_NODEFILE -np 4 ./exp 100
+mpirun --hostfile $PBS_NODEFILE -np 4 ./exp 15000
 

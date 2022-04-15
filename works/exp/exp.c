@@ -107,32 +107,31 @@ void count(Long* result, int begin, int end, int order) { //Interesting solution
 }	
 */		
 
-void transform(Long* result, int rank, MPI_Status status) {
-	Long res1, res2, res3;
+void transform(Long* result, int rank, MPI_Status status, int commsize) {	//ADD MASSIV
+	Long res[commsize - 1];
 	int tag = 7779;
-	init(&res1, 0, result->size);
-	init(&res2, 0, result->size);
-	init(&res3, 0, result->size);
+	int i;
+	for(i = 0; i < commsize - 1; ++i) {
+		init(&res[i], 0, result->size);
+	}
 	if ( rank == 0 ) {
-		MPI_Recv(res1.digits, res1.size, MPI_INT, 1, tag, MPI_COMM_WORLD, &status);
-		MPI_Recv(res2.digits, res2.size, MPI_INT, 2, tag, MPI_COMM_WORLD, &status);
-		MPI_Recv(res3.digits, res3.size, MPI_INT, 3, tag, MPI_COMM_WORLD, &status);	
+		for(i = 0; i < commsize - 1; ++i) {
+			MPI_Recv(res[i].digits, res[i].size, MPI_INT, i + 1, tag, MPI_COMM_WORLD, &status);
+		}
 	}
 	else {
 		MPI_Send(result->digits, result->size, MPI_INT, 0, tag, MPI_COMM_WORLD);
 	}
-	if ( rank == 0 ) { 
-		add(result, &res1, result);
-		add(result, &res2, result);
-		add(result, &res3, result);
+	if ( rank == 0 ) {
+		for(i = 0; i < commsize - 1; ++i) {
+			add(result, &res[i], result);
+		}
 		add_one(result);
 		add_one(result);
-		printf("exp = ");
-		print(result);
 	}
-	clear(&res1);
-	clear(&res2);
-	clear(&res3);
+	for(i = 0; i < commsize - 1; ++i) {
+		clear(&(res[i]));
+	}
 }
 		
 
@@ -144,23 +143,27 @@ int main(int argc, char** argv) {
 	p *= AMENDMENT;
 	MPI_Status status;
 	MPI_Init(&argc, &argv);
+	double begin = MPI_Wtime();
 	MPI_Comm_size(MPI_COMM_WORLD, &commsize);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	Numbers t;
 	init(&result, 0, p);
 	Numbers_init(&t, &result, rank, commsize);
-	//init(&result, 2, p);
-	
-	//printf("size = %d\n Number Teulor = %d\n", result.size, N);
 	count_2(&result, 2, N, p, rank, commsize);
-	//printf("work\nsize = %d\nreal_size = %d\n", result.size, p);
-	//print(&result);
-	//my_print(&t);
-	if ( commsize == 4 ) {
-		transform(&result, rank, status);
+	if ( commsize > 1 ) {
+		transform(&result, rank, status, commsize);
+		if ( rank == 0 ) {
+			my_print(&t);
+		}
 	}
 	else {
+		add_one(t.res);
+		add_one(t.res);
 		my_print(&t);
+	}
+	double end = MPI_Wtime();
+	if ( rank == 0 ) {
+		printf("time = %lf\n", end - begin);
 	}
 	clear(&result);
 	MPI_Finalize();
