@@ -1,4 +1,6 @@
 Многопоточное интегрирование sin(1 / x) c динамическим шагом.
+./run (num_threads)
+./unit_test (number of test)
 RUN:
 ____________
 make
