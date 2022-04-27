@@ -4,7 +4,7 @@
 double integrate(int id, double length, int num) {
 	double a = ( (double) id ) * length / num;
 	double b = ( (double) (id + 1)) * length / num;
-	double eps = 0.0001;
+	double eps = 0.000001;
 	double result = 0;
 	int n = 1 / ( M_PI * a);
 	if ( n < 1 ) {
@@ -12,14 +12,14 @@ double integrate(int id, double length, int num) {
 	}
 	double len = 1 / ( M_PI * n * (n + 1));
 	double right = 1 / ( M_PI * n );
-	double step = len / 100000;		//number of step on one 2pi
+	double step = len / 1000000;		//number of step on one 2pi
 	double x = a;
 	while( x - eps < b ) {
 		if ( ( x > right ) && ( n != 1 ) ) {
 			n--;
 			right = 1 / ( M_PI * n );
 			len = ( M_PI * n * (n + 1));
-			step = len / 100000;
+			step = len / 1000000;
 		}
 		x += step;
 		result += sin(1 / x) * 0.5 * step;
@@ -46,10 +46,10 @@ void check_arg(int argc) {
 }
 
 int check_atoi(int num_threads) {
-	if ( num_threads > get_nprocs() ) {
-                fprintf(stdout, "num_threads < currency, programm should changed number of threads\n");
-                num_threads = get_nprocs();
-        }
+	//if ( num_threads > get_nprocs() ) {
+        //        fprintf(stdout, "num_threads < currency, programm should changed number of threads\n");
+        //        num_threads = get_nprocs();
+        //}
 	if ( num_threads <= 0 ) {
 		ERROR("ERROR IN ATOI");
 		exit(2);
