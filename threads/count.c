@@ -1,10 +1,10 @@
 #include "count.h"
 
 
-double integrate(int id, double length, int num) {
-	double a = ( (double) id ) * length / num;
-	double b = ( (double) (id + 1)) * length / num;
-	double eps = 0.000001;
+double integrate(int id, double length, int num, double a, double b) {
+	//double a = ( (double) id ) * length / num;
+	//double b = ( (double) (id + 1)) * length / num;
+	//double eps = 0.000001;
 	double result = 0;
 	int n = 1 / ( M_PI * a);
 	if ( n < 1 ) {
@@ -12,14 +12,14 @@ double integrate(int id, double length, int num) {
 	}
 	double len = 1 / ( M_PI * n * (n + 1));
 	double right = 1 / ( M_PI * n );
-	double step = len / 1000000;		//number of step on one 2pi
+	double step = len / 9000000;		//number of step on one 2pi
 	double x = a;
-	while( x - eps < b ) {
+	while( x < b ) {
 		if ( ( x > right ) && ( n != 1 ) ) {
 			n--;
 			right = 1 / ( M_PI * n );
 			len = ( M_PI * n * (n + 1));
-			step = len / 1000000;
+			step = len / 9000000;
 		}
 		x += step;
 		result += sin(1 / x) * 0.5 * step;
@@ -30,8 +30,14 @@ double integrate(int id, double length, int num) {
 void* count(void* param) {
 	Threads* t = (Threads*) param;
 	struct timeval begin, end, interval;
+	//double step = t->len / 1000;
 	gettimeofday(&begin, NULL);
-	t->result = integrate(t->id, t->len, t->threads_num);
+	t->result = 0;
+	int size = 1;
+	//for(int i = 1; i <= size; ++i) {
+		double mini_res = integrate(t->id, t->len, t->threads_num, ( (double) (t->id) ) * t->len / t->threads_num, ( (double) (t->id + 1) ) * t->len / t->threads_num);
+		t->result += mini_res;
+	//}
 	gettimeofday(&end, NULL);
 	timersub(&end, &begin, &interval);
 	t->time = interval.tv_sec + 0.000001 * interval.tv_usec;

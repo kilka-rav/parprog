@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
 		}
 		res += threads[i].result;
 	}
-	printf("result = %.3lf\n", res);
+	printf("result = %.5lf\n", res);
 	print_time(threads);
 	free(threads);
 	return 0;

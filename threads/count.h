@@ -22,7 +22,7 @@ typedef struct _Threads {
 } Threads;
 
 void* count(void* param); 	//to parallel algo
-double integrate(int id, double dx, int num);	//integrate
+double integrate(int id, double dx, int num, double a, double b);	//integrate
 void check_arg(int argc);
 int check_atoi(int num_threads);	
 void print_time(Threads* threads);
