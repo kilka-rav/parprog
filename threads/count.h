@@ -16,13 +16,20 @@ typedef struct _Threads {
 	int id;
 	double result;
 	double len;
+	double begin;
+	double end;
+	double a;
+	double b;
 	int threads_num;
 	pthread_t thread;
 	double time;
 } Threads;
 
+
+double function(double x);
+void count_interval(Threads* t);
 void* count(void* param); 	//to parallel algo
-double integrate(int id, double dx, int num, double a, double b);	//integrate
+double integrate(double a, double b);	//integrate
 void check_arg(int argc);
 int check_atoi(int num_threads);	
 void print_time(Threads* threads);

@@ -4,7 +4,7 @@ int main(int argc, char** argv) {
 	check_arg(argc);
 	int threads_num = atoi(argv[1]);
 	threads_num = check_atoi(threads_num);
-	double begin = 0.00001;
+	double begin = 0.0001;
 	double end = 5.0;
 	double len = end - begin;
 	double res = 0;
@@ -12,6 +12,8 @@ int main(int argc, char** argv) {
 	Threads* threads = (Threads*) malloc(threads_num * sizeof(Threads));
 	for(int i = 0; i < threads_num; ++i) {
 		threads[i].id = i;
+		threads[i].begin = begin;
+		threads[i].end = end;
 		threads[i].len = len;
 		threads[i].result = 0;
 		threads[i].threads_num = threads_num;

@@ -1,48 +1,77 @@
 #include "count.h"
 
-
-double integrate(int id, double length, int num, double a, double b) {
-	//double a = ( (double) id ) * length / num;
-	//double b = ( (double) (id + 1)) * length / num;
-	//double eps = 0.000001;
+double integrate(double a, double b) {
 	double result = 0;
-	int n = 1 / ( M_PI * a);
+	double eps = 0.000001;
+	int n = 1 / ( M_PI * 10);
 	if ( n < 1 ) {
 		n = 1;
 	}
 	double len = 1 / ( M_PI * n * (n + 1));
 	double right = 1 / ( M_PI * n );
-	double step = len / 9000000;		//number of step on one 2pi
+	double step = len / 100000;		//number of step on one 2pi
 	double x = a;
+	double prev;
 	while( x < b ) {
 		if ( ( x > right ) && ( n != 1 ) ) {
 			n--;
 			right = 1 / ( M_PI * n );
 			len = ( M_PI * n * (n + 1));
-			step = len / 9000000;
+			step = len / 100000;
 		}
+		double tmp = function(x);
 		x += step;
-		result += sin(1 / x) * 0.5 * step;
+		if ( x + eps >= b ) {
+			break;
+		}
+		tmp += function(x);
+		tmp *= 0.5 * step;
+		result += tmp;
 	}
+	x -= step;
+	result += 0.5 * (function(b) + function(x)) * ( b - x );
 	return result;
 }
+
+
+double function(double x) {
+	return sin(1 / x);
+}
+
 
 void* count(void* param) {
 	Threads* t = (Threads*) param;
 	struct timeval begin, end, interval;
-	//double step = t->len / 1000;
+	count_interval(t);
 	gettimeofday(&begin, NULL);
-	t->result = 0;
-	int size = 1;
-	//for(int i = 1; i <= size; ++i) {
-		double mini_res = integrate(t->id, t->len, t->threads_num, ( (double) (t->id) ) * t->len / t->threads_num, ( (double) (t->id + 1) ) * t->len / t->threads_num);
-		t->result += mini_res;
-	//}
+	t->result = integrate(t->a, t->b);
 	gettimeofday(&end, NULL);
 	timersub(&end, &begin, &interval);
 	t->time = interval.tv_sec + 0.000001 * interval.tv_usec;
 	return NULL;
 }
+
+void count_interval(Threads* t) {
+	if ( t->id == 0 ) {
+		t->a = t->begin;
+		if ( t->threads_num == 1 ) {
+			t->b = t->end;
+		}
+		else {
+			t->b = ( (double) (t->id + 1) * t->len / t->threads_num);
+		}
+	}
+
+	else {
+		t->a = ( (double) (t->id) * t->len / t->threads_num );
+		t->b = ( (double) (t->id + 1) * t->len / t->threads_num);
+	}
+	if ( t->id == t->threads_num - 1 ) {
+		t->b = t->end;
+	}
+}
+
+
 
 void check_arg(int argc) {
 	if ( argc <= 1 ) {
@@ -66,6 +95,6 @@ int check_atoi(int num_threads) {
 void print_time(Threads* threads) {
 	int num = threads[0].threads_num;
 	for(int i = 0; i < num; ++i) {
-		printf("rang = %d time = %lf\n", threads[i].id, threads[i].time);
+		printf("rang = %d a = %lf, b = %lf, result = %lf, time = %lf\n", threads[i].id, threads[i].a, threads[i].b, threads[i].result, threads[i].time);
 	}
 }
