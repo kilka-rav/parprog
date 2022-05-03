@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator K.39
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o D:\PRG\//gyua -u 0 D:/PRG/counter.bit -x xc18v256 
+
+PROM D:\PRG\//gyua.prm map: Fri Apr 29 16:58:23 2022
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          32K
+PROM start    0000:0000
+PROM end      0000:7fff
+PROM checksum 003107e9
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0000:6087     Apr 29 16:56:44 2022 D:/PRG/counter.bit

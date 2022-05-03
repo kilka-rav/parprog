@@ -1,0 +1,492 @@
+Release 10.1.03 - xst K.39 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to D:/PRG/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 1.14 secs
+ 
+--> Parameter xsthdpdir set to D:/PRG/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 1.16 secs
+ 
+--> Reading design: counter.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "counter.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "counter"
+Output Format                      : NGC
+Target Device                      : xc2s15-6-tq144
+
+---- Source Options
+Top Module Name                    : counter
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : lut
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100
+Add Generic Clock Buffer(BUFG)     : 4
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Convert Tristates To Logic         : Yes
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : counter.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "counter.vf" in library work
+Module <OR8_MXILINX_counter> compiled
+Module <SR8CE_MXILINX_counter> compiled
+Module <counter> compiled
+No errors in compilation
+Analysis of file <"counter.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <counter> in library <work>.
+
+Analyzing hierarchy for module <SR8CE_MXILINX_counter> in library <work>.
+
+Analyzing hierarchy for module <OR8_MXILINX_counter> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <counter>.
+Module <counter> is correct for synthesis.
+ 
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_2> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_2> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_2> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_2> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_3> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_3> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_3> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_3> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_4> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_4> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_4> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_4> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_5> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_5> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_5> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_5> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_6> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_6> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_6> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_6> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_7> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_7> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_7> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_7> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_8> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_8> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_8> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_8> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_9> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_9> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_9> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_9> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_26> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_26> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_26> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_26> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_27> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_27> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_27> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_27> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_28> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_28> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_28> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_28> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_29> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_29> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_29> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_29> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_30> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_30> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_30> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_30> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_31> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_31> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_31> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_31> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_32> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_32> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_32> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_32> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_33> in unit <counter>.
+    Set user-defined property "DRIVE =  12" for instance <XLXI_33> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_33> in unit <counter>.
+    Set user-defined property "SLEW =  SLOW" for instance <XLXI_33> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_35> in unit <counter>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <XLXI_35> in unit <counter>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <XLXI_35> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_35> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_36> in unit <counter>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <XLXI_36> in unit <counter>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <XLXI_36> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_36> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_37> in unit <counter>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <XLXI_37> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_37> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_58> in unit <counter>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <XLXI_58> in unit <counter>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <XLXI_58> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_58> in unit <counter>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <XLXI_62> in unit <counter>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <XLXI_62> in unit <counter>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <XLXI_62> in unit <counter>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <XLXI_62> in unit <counter>.
+    Set user-defined property "HU_SET =  XLXI_284_0" for instance <XLXI_284> in unit <counter>.
+    Set user-defined property "HU_SET =  XLXI_293_1" for instance <XLXI_293> in unit <counter>.
+Analyzing module <SR8CE_MXILINX_counter> in library <work>.
+Module <SR8CE_MXILINX_counter> is correct for synthesis.
+ 
+    Set user-defined property "INIT =  0" for instance <I_Q0> in unit <SR8CE_MXILINX_counter>.
+    Set user-defined property "INIT =  0" for instance <I_Q1> in unit <SR8CE_MXILINX_counter>.
+    Set user-defined property "INIT =  0" for instance <I_Q2> in unit <SR8CE_MXILINX_counter>.
+    Set user-defined property "INIT =  0" for instance <I_Q3> in unit <SR8CE_MXILINX_counter>.
+    Set user-defined property "INIT =  0" for instance <I_Q4> in unit <SR8CE_MXILINX_counter>.
+    Set user-defined property "INIT =  0" for instance <I_Q5> in unit <SR8CE_MXILINX_counter>.
+    Set user-defined property "INIT =  0" for instance <I_Q6> in unit <SR8CE_MXILINX_counter>.
+    Set user-defined property "INIT =  0" for instance <I_Q7> in unit <SR8CE_MXILINX_counter>.
+Analyzing module <OR8_MXILINX_counter> in library <work>.
+Module <OR8_MXILINX_counter> is correct for synthesis.
+ 
+    Set user-defined property "RLOC =  R0C0.S0" for instance <I_36_91> in unit <OR8_MXILINX_counter>.
+    Set user-defined property "RLOC =  R0C0.S1" for instance <I_36_116> in unit <OR8_MXILINX_counter>.
+    Set user-defined property "RLOC =  R0C0.S1" for instance <I_36_117> in unit <OR8_MXILINX_counter>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <SR8CE_MXILINX_counter>.
+    Related source file is "counter.vf".
+Unit <SR8CE_MXILINX_counter> synthesized.
+
+
+Synthesizing Unit <OR8_MXILINX_counter>.
+    Related source file is "counter.vf".
+WARNING:Xst:653 - Signal <dummy> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+Unit <OR8_MXILINX_counter> synthesized.
+
+
+Synthesizing Unit <counter>.
+    Related source file is "counter.vf".
+Unit <counter> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Loading device for application Rf_Device from file '2s15.nph' in environment C:\Xilinx\10.1\ISE.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 8
+ Flip-Flops                                            : 8
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <counter> ...
+
+Optimizing unit <SR8CE_MXILINX_counter> ...
+
+Optimizing unit <OR8_MXILINX_counter> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block counter, actual ratio is 2.
+WARNING:Xst:387 - The KEEP property attached to the net <XLXI_293/O> may hinder timing optimization.
+   You may achieve better results by removing this property
+WARNING:Xst:387 - The KEEP property attached to the net <XLXI_293/S0> may hinder timing optimization.
+   You may achieve better results by removing this property
+WARNING:Xst:387 - The KEEP property attached to the net <XLXI_293/S1> may hinder timing optimization.
+   You may achieve better results by removing this property
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 8
+ Flip-Flops                                            : 8
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : counter.ngr
+Top Level Output File Name         : counter
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 21
+
+Cell Usage :
+# BELS                             : 10
+#      GND                         : 1
+#      INV                         : 1
+#      MUXF5                       : 1
+#      OR2                         : 2
+#      OR4                         : 2
+#      XOR2                        : 3
+# FlipFlops/Latches                : 8
+#      FDCE                        : 8
+# IO Buffers                       : 21
+#      IBUF                        : 4
+#      IBUFG                       : 1
+#      OBUF                        : 16
+# Others                           : 3
+#      FMAP                        : 3
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2s15tq144-6 
+
+ Number of Slices:                        4  out of    192     2%  
+ Number of Slice Flip Flops:              8  out of    384     2%  
+ Number of 4 input LUTs:                  1  out of    384     0%  
+ Number of IOs:                          21
+ Number of bonded IOBs:                  21  out of     86    24%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+XLXN_476(XLXI_34:O)                | NONE(*)(XLXI_284/I_Q0) | 8     |
+-----------------------------------+------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+CLR                                | IBUF                   | 8     |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -6
+
+   Minimum period: 9.696ns (Maximum Frequency: 103.135MHz)
+   Minimum input arrival time before clock: 3.507ns
+   Maximum output required time after clock: 7.319ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'XLXN_476'
+  Clock period: 9.696ns (frequency: 103.135MHz)
+  Total number of paths / destination ports: 19 / 8
+-------------------------------------------------------------------------
+Delay:               9.696ns (Levels of Logic = 5)
+  Source:            XLXI_284/I_Q3 (FF)
+  Destination:       XLXI_284/I_Q0 (FF)
+  Source Clock:      XLXN_476 rising
+  Destination Clock: XLXN_476 rising
+
+  Data Path: XLXI_284/I_Q3 to XLXI_284/I_Q0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             5   1.085   1.566  I_Q3 (Q<3>)
+     end scope: 'XLXI_284'
+     XOR2:I0->O            1   0.549   1.035  XLXI_295 (XLXN_493)
+     XOR2:I1->O            1   0.549   1.035  XLXI_296 (XLXN_495)
+     XOR2:I1->O            1   0.549   1.035  XLXI_297 (XLXN_496)
+     OR2:I0->O             1   0.549   1.035  XLXI_298 (XLXN_498)
+     begin scope: 'XLXI_284'
+     FDCE:D                    0.709          I_Q0
+    ----------------------------------------
+    Total                      9.696ns (3.990ns logic, 5.706ns route)
+                                       (41.2% logic, 58.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'XLXN_476'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              3.507ns (Levels of Logic = 2)
+  Source:            CE (PAD)
+  Destination:       XLXI_284/I_Q0 (FF)
+  Destination Clock: XLXN_476 rising
+
+  Data Path: CE to XLXI_284/I_Q0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             8   0.776   1.845  XLXI_58 (XLXN_477)
+     begin scope: 'XLXI_284'
+     FDCE:CE                   0.886          I_Q0
+    ----------------------------------------
+    Total                      3.507ns (1.662ns logic, 1.845ns route)
+                                       (47.4% logic, 52.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'XLXN_476'
+  Total number of paths / destination ports: 16 / 16
+-------------------------------------------------------------------------
+Offset:              7.319ns (Levels of Logic = 2)
+  Source:            XLXI_284/I_Q1 (FF)
+  Destination:       D1 (PAD)
+  Source Clock:      XLXN_476 rising
+
+  Data Path: XLXI_284/I_Q1 to D1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             5   1.085   1.566  I_Q1 (Q<1>)
+     end scope: 'XLXI_284'
+     OBUF:I->O                 4.668          XLXI_8 (D1)
+    ----------------------------------------
+    Total                      7.319ns (5.753ns logic, 1.566ns route)
+                                       (78.6% logic, 21.4% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 104.00 secs
+Total CPU time to Xst completion: 103.56 secs
+ 
+--> 
+
+Total memory usage is 135112 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

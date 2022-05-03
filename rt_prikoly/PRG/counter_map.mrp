@@ -1,0 +1,178 @@
+Release 10.1.03 Map K.39 (nt)
+Xilinx Mapping Report File for Design 'counter'
+
+Design Information
+------------------
+Command Line   : map -ise D:/PRG/PRG.ise -intstyle ise -p xc2s15-tq144-6 -cm
+area -pr off -k 4 -c 100 -tx off -o counter_map.ncd counter.ngd counter.pcf 
+Target Device  : xc2s15
+Target Package : tq144
+Target Speed   : -6
+Mapper Version : spartan2 -- $Revision: 1.46.12.2 $
+Mapped Date    : Fri Apr 29 16:43:48 2022
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    2
+Logic Utilization:
+  Number of Slice Flip Flops:         8 out of    384    2%
+  Number of 4 input LUTs:             5 out of    384    1%
+Logic Distribution:
+    Number of occupied Slices:                           7 out of    192    3%
+    Number of Slices containing only related logic:      7 out of      7  100%
+    Number of Slices containing unrelated logic:         0 out of      7    0%
+        *See NOTES below for an explanation of the effects of unrelated logic
+Total Number of 4 input LUTs:            7 out of    384    1%
+      Number used as logic:                         5
+      Number used as a route-thru:                  2
+   Number of bonded IOBs:            20 out of     86   23%
+   Number of GCLKIOBs:                1 out of      4   25%
+
+   Number of RPM macros:            1
+Peak Memory Usage:  134 MB
+Total REAL time to MAP completion:  1 mins 46 secs 
+Total CPU time to MAP completion:   14 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Modular Design Summary
+Section 11 - Timing Report
+Section 12 - Configuration String Information
+Section 13 - Control Set Information
+Section 14 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:LIT:113 - Dedicated Clock IO IBUFG symbol "XLXI_37" (output
+   signal=XLXN_67) is not driving a global clock buffer of a DLL. This
+   configuration will result in high clock skew and long net delay.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net XLXN_476 is sourced by a
+   combinatorial pin. This is not good design practice. Use the CE pin to
+   control the loading of data into the flip-flop.
+
+Section 3 - Informational
+-------------------------
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   1 block(s) removed
+   1 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+The signal "XLXI_293/dummy" is sourceless and has been removed.
+Unused block "XLXI_293/XST_GND" (ZERO) removed.
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type    | Direction | IO Standard | Drive    | Slew | Reg (s)  | Resistor | IOB   |
+|                                    |         |           |             | Strength | Rate |          |          | Delay |
++------------------------------------------------------------------------------------------------------------------------+
+| CLK                                | GCLKIOB | INPUT     | LVTTL       |          |      |          |          |       |
+| BUT                                | IOB     | INPUT     | LVTTL       |          |      |          |          |       |
+| CE                                 | IOB     | INPUT     | LVTTL       |          |      |          |          |       |
+| CLR                                | IOB     | INPUT     | LVTTL       |          |      |          |          |       |
+| D0                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| D1                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| D2                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| D3                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| D4                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| D5                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| D6                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| D7                                 | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED0                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED1                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED2                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED3                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED4                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED5                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED6                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| LED7                               | IOB     | OUTPUT    | LVTTL       | 12       | SLOW |          |          |       |
+| MODE                               | IOB     | INPUT     | LVTTL       |          |      |          |          |       |
++------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+XLXI_293_1                              
+XLXI_284_0                              
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Modular Design Summary
+-----------------------------------
+Modular Design not used for this design.
+
+Section 11 - Timing Report
+--------------------------
+No timing report for this architecture.
+
+Section 12 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 13 - Control Set Information
+------------------------------------
+No control set information for this architecture.

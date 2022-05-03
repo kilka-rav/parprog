@@ -1,0 +1,167 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\10.1\ISE\bin\nt\unwrapped\trce.exe -ise D:/PRG/PRG.ise -intstyle ise
+-v 3 -s 6 -xml counter counter.ncd -o counter.twr counter.pcf -ucf counter.ucf
+
+Design file:              counter.ncd
+Physical constraint file: counter.pcf
+Device,package,speed:     xc2s15,tq144,-6 (PRODUCTION 1.27 2008-01-09)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock BUT
+------------+------------+------------+------------------+--------+
+            |  Setup to  |  Hold to   |                  | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------+------------+------------+------------------+--------+
+CE          |   -1.884(R)|    3.395(R)|XLXN_476          |   0.000|
+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock CLK
+------------+------------+------------+------------------+--------+
+            |  Setup to  |  Hold to   |                  | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------+------------+------------+------------------+--------+
+CE          |   -1.712(R)|    3.223(R)|XLXN_476          |   0.000|
+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock MODE
+------------+------------+------------+------------------+--------+
+            |  Setup to  |  Hold to   |                  | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------+------------+------------+------------------+--------+
+CE          |   -2.178(R)|    3.689(R)|XLXN_476          |   0.000|
+------------+------------+------------+------------------+--------+
+
+Clock BUT to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+D0          |   13.776(R)|XLXN_476          |   0.000|
+D1          |   13.869(R)|XLXN_476          |   0.000|
+D2          |   13.157(R)|XLXN_476          |   0.000|
+D3          |   13.306(R)|XLXN_476          |   0.000|
+D4          |   13.313(R)|XLXN_476          |   0.000|
+D5          |   13.858(R)|XLXN_476          |   0.000|
+D6          |   13.611(R)|XLXN_476          |   0.000|
+D7          |   13.535(R)|XLXN_476          |   0.000|
+LED0        |   13.226(R)|XLXN_476          |   0.000|
+LED1        |   13.414(R)|XLXN_476          |   0.000|
+LED2        |   13.589(R)|XLXN_476          |   0.000|
+LED3        |   13.392(R)|XLXN_476          |   0.000|
+LED4        |   13.159(R)|XLXN_476          |   0.000|
+LED5        |   13.341(R)|XLXN_476          |   0.000|
+LED6        |   13.724(R)|XLXN_476          |   0.000|
+LED7        |   13.540(R)|XLXN_476          |   0.000|
+------------+------------+------------------+--------+
+
+Clock CLK to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+D0          |   13.604(R)|XLXN_476          |   0.000|
+D1          |   13.697(R)|XLXN_476          |   0.000|
+D2          |   12.985(R)|XLXN_476          |   0.000|
+D3          |   13.134(R)|XLXN_476          |   0.000|
+D4          |   13.141(R)|XLXN_476          |   0.000|
+D5          |   13.686(R)|XLXN_476          |   0.000|
+D6          |   13.439(R)|XLXN_476          |   0.000|
+D7          |   13.363(R)|XLXN_476          |   0.000|
+LED0        |   13.054(R)|XLXN_476          |   0.000|
+LED1        |   13.242(R)|XLXN_476          |   0.000|
+LED2        |   13.417(R)|XLXN_476          |   0.000|
+LED3        |   13.220(R)|XLXN_476          |   0.000|
+LED4        |   12.987(R)|XLXN_476          |   0.000|
+LED5        |   13.169(R)|XLXN_476          |   0.000|
+LED6        |   13.552(R)|XLXN_476          |   0.000|
+LED7        |   13.368(R)|XLXN_476          |   0.000|
+------------+------------+------------------+--------+
+
+Clock MODE to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+D0          |   14.070(R)|XLXN_476          |   0.000|
+D1          |   14.163(R)|XLXN_476          |   0.000|
+D2          |   13.451(R)|XLXN_476          |   0.000|
+D3          |   13.600(R)|XLXN_476          |   0.000|
+D4          |   13.607(R)|XLXN_476          |   0.000|
+D5          |   14.152(R)|XLXN_476          |   0.000|
+D6          |   13.905(R)|XLXN_476          |   0.000|
+D7          |   13.829(R)|XLXN_476          |   0.000|
+LED0        |   13.520(R)|XLXN_476          |   0.000|
+LED1        |   13.708(R)|XLXN_476          |   0.000|
+LED2        |   13.883(R)|XLXN_476          |   0.000|
+LED3        |   13.686(R)|XLXN_476          |   0.000|
+LED4        |   13.453(R)|XLXN_476          |   0.000|
+LED5        |   13.635(R)|XLXN_476          |   0.000|
+LED6        |   14.018(R)|XLXN_476          |   0.000|
+LED7        |   13.834(R)|XLXN_476          |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock BUT
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+BUT            |    5.146|         |         |         |
+CLK            |    5.146|         |         |         |
+MODE           |    5.146|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+BUT            |    5.146|         |         |         |
+CLK            |    5.146|         |         |         |
+MODE           |    5.146|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock MODE
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+BUT            |    5.146|         |         |         |
+CLK            |    5.146|         |         |         |
+MODE           |    5.146|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Fri Apr 29 16:52:30 2022 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 59 MB
+
+
+

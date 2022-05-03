@@ -1,0 +1,283 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 10.1.03
+//  \   \         Application : sch2verilog
+//  /   /         Filename : counter.vf
+// /___/   /\     Timestamp : 04/29/2022 15:54:04
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: C:\Xilinx\10.1\ISE\bin\nt\unwrapped\sch2verilog.exe -intstyle ise -family spartan2 -w D:/PRG/counter.sch counter.vf
+//Design Name: counter
+//Device: spartan2
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module OR8_MXILINX_counter(I0, 
+                           I1, 
+                           I2, 
+                           I3, 
+                           I4, 
+                           I5, 
+                           I6, 
+                           I7, 
+                           O);
+
+    input I0;
+    input I1;
+    input I2;
+    input I3;
+    input I4;
+    input I5;
+    input I6;
+    input I7;
+   output O;
+   
+   wire dummy;
+   wire S0;
+   wire S1;
+   wire O_DUMMY;
+   
+   assign O = O_DUMMY;
+   FMAP I_36_91 (.I1(S0), 
+                 .I2(S1), 
+                 .I3(dummy), 
+                 .I4(dummy), 
+                 .O(O_DUMMY));
+   // synthesis attribute RLOC of I_36_91 is "R0C0.S0"
+   OR2 I_36_94 (.I0(S0), 
+                .I1(S1), 
+                .O(O_DUMMY));
+   OR4 I_36_95 (.I0(I4), 
+                .I1(I5), 
+                .I2(I6), 
+                .I3(I7), 
+                .O(S1));
+   OR4 I_36_112 (.I0(I0), 
+                 .I1(I1), 
+                 .I2(I2), 
+                 .I3(I3), 
+                 .O(S0));
+   FMAP I_36_116 (.I1(I0), 
+                  .I2(I1), 
+                  .I3(I2), 
+                  .I4(I3), 
+                  .O(S0));
+   // synthesis attribute RLOC of I_36_116 is "R0C0.S1"
+   FMAP I_36_117 (.I1(I4), 
+                  .I2(I5), 
+                  .I3(I6), 
+                  .I4(I7), 
+                  .O(S1));
+   // synthesis attribute RLOC of I_36_117 is "R0C0.S1"
+endmodule
+`timescale 1ns / 1ps
+
+module SR8CE_MXILINX_counter(C, 
+                             CE, 
+                             CLR, 
+                             SLI, 
+                             Q);
+
+    input C;
+    input CE;
+    input CLR;
+    input SLI;
+   output [7:0] Q;
+   
+   wire [7:0] Q_DUMMY;
+   
+   assign Q[7:0] = Q_DUMMY[7:0];
+   FDCE I_Q0 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(SLI), 
+              .Q(Q_DUMMY[0]));
+   defparam I_Q0.INIT = 1'b0;
+   FDCE I_Q1 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(Q_DUMMY[0]), 
+              .Q(Q_DUMMY[1]));
+   defparam I_Q1.INIT = 1'b0;
+   FDCE I_Q2 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(Q_DUMMY[1]), 
+              .Q(Q_DUMMY[2]));
+   defparam I_Q2.INIT = 1'b0;
+   FDCE I_Q3 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(Q_DUMMY[2]), 
+              .Q(Q_DUMMY[3]));
+   defparam I_Q3.INIT = 1'b0;
+   FDCE I_Q4 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(Q_DUMMY[3]), 
+              .Q(Q_DUMMY[4]));
+   defparam I_Q4.INIT = 1'b0;
+   FDCE I_Q5 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(Q_DUMMY[4]), 
+              .Q(Q_DUMMY[5]));
+   defparam I_Q5.INIT = 1'b0;
+   FDCE I_Q6 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(Q_DUMMY[5]), 
+              .Q(Q_DUMMY[6]));
+   defparam I_Q6.INIT = 1'b0;
+   FDCE I_Q7 (.C(C), 
+              .CE(CE), 
+              .CLR(CLR), 
+              .D(Q_DUMMY[6]), 
+              .Q(Q_DUMMY[7]));
+   defparam I_Q7.INIT = 1'b0;
+endmodule
+`timescale 1ns / 1ps
+
+module counter(BUT, 
+               CE, 
+               CLK, 
+               CLR, 
+               MODE, 
+               D0, 
+               D1, 
+               D2, 
+               D3, 
+               D4, 
+               D5, 
+               D6, 
+               D7, 
+               LED0, 
+               LED1, 
+               LED2, 
+               LED3, 
+               LED4, 
+               LED5, 
+               LED6, 
+               LED7);
+
+    input BUT;
+    input CE;
+    input CLK;
+    input CLR;
+    input MODE;
+   output D0;
+   output D1;
+   output D2;
+   output D3;
+   output D4;
+   output D5;
+   output D6;
+   output D7;
+   output LED0;
+   output LED1;
+   output LED2;
+   output LED3;
+   output LED4;
+   output LED5;
+   output LED6;
+   output LED7;
+   
+   wire [7:0] Q;
+   wire XLXN_65;
+   wire XLXN_66;
+   wire XLXN_67;
+   wire XLXN_475;
+   wire XLXN_476;
+   wire XLXN_477;
+   wire XLXN_491;
+   wire XLXN_493;
+   wire XLXN_495;
+   wire XLXN_496;
+   wire XLXN_497;
+   wire XLXN_498;
+   
+   OBUF XLXI_2 (.I(Q[7]), 
+                .O(D7));
+   OBUF XLXI_3 (.I(Q[6]), 
+                .O(D6));
+   OBUF XLXI_4 (.I(Q[5]), 
+                .O(D5));
+   OBUF XLXI_5 (.I(Q[4]), 
+                .O(D4));
+   OBUF XLXI_6 (.I(Q[3]), 
+                .O(D3));
+   OBUF XLXI_7 (.I(Q[2]), 
+                .O(D2));
+   OBUF XLXI_8 (.I(Q[1]), 
+                .O(D1));
+   OBUF XLXI_9 (.I(Q[0]), 
+                .O(D0));
+   OBUF XLXI_26 (.I(Q[0]), 
+                 .O(LED0));
+   OBUF XLXI_27 (.I(Q[1]), 
+                 .O(LED1));
+   OBUF XLXI_28 (.I(Q[2]), 
+                 .O(LED2));
+   OBUF XLXI_29 (.I(Q[3]), 
+                 .O(LED3));
+   OBUF XLXI_30 (.I(Q[4]), 
+                 .O(LED4));
+   OBUF XLXI_31 (.I(Q[5]), 
+                 .O(LED5));
+   OBUF XLXI_32 (.I(Q[6]), 
+                 .O(LED6));
+   OBUF XLXI_33 (.I(Q[7]), 
+                 .O(LED7));
+   MUXF5 XLXI_34 (.I0(XLXN_67), 
+                  .I1(XLXN_65), 
+                  .S(XLXN_66), 
+                  .O(XLXN_476));
+   IBUF XLXI_35 (.I(BUT), 
+                 .O(XLXN_65));
+   IBUF XLXI_36 (.I(MODE), 
+                 .O(XLXN_66));
+   IBUFG XLXI_37 (.I(CLK), 
+                  .O(XLXN_67));
+   IBUF XLXI_58 (.I(CE), 
+                 .O(XLXN_477));
+   IBUF XLXI_62 (.I(CLR), 
+                 .O(XLXN_475));
+   SR8CE_MXILINX_counter XLXI_284 (.C(XLXN_476), 
+                                   .CE(XLXN_477), 
+                                   .CLR(XLXN_475), 
+                                   .SLI(XLXN_498), 
+                                   .Q(Q[7:0]));
+   // synthesis attribute HU_SET of XLXI_284 is "XLXI_284_0"
+   OR8_MXILINX_counter XLXI_293 (.I0(Q[0]), 
+                                 .I1(Q[1]), 
+                                 .I2(Q[2]), 
+                                 .I3(Q[3]), 
+                                 .I4(Q[4]), 
+                                 .I5(Q[5]), 
+                                 .I6(Q[6]), 
+                                 .I7(Q[7]), 
+                                 .O(XLXN_491));
+   // synthesis attribute HU_SET of XLXI_293 is "XLXI_293_1"
+   INV XLXI_294 (.I(XLXN_491), 
+                 .O(XLXN_497));
+   XOR2 XLXI_295 (.I0(Q[3]), 
+                  .I1(Q[7]), 
+                  .O(XLXN_493));
+   XOR2 XLXI_296 (.I0(Q[2]), 
+                  .I1(XLXN_493), 
+                  .O(XLXN_495));
+   XOR2 XLXI_297 (.I0(Q[1]), 
+                  .I1(XLXN_495), 
+                  .O(XLXN_496));
+   OR2 XLXI_298 (.I0(XLXN_496), 
+                 .I1(XLXN_497), 
+                 .O(XLXN_498));
+endmodule

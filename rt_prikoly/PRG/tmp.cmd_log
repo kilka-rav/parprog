@@ -1,0 +1,1 @@
+sch2verilog -intstyle ise -family spartan2   -w "D:/PRG/tmp.sch" tmp.vf

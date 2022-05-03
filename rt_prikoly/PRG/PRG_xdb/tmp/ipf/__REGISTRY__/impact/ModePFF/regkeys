@@ -1,0 +1,66 @@
+Autosize
+
+s
+Compressed
+
+s
+Direction
+UP
+s
+File Format
+mcs
+s
+Fill Value
+FF
+s
+Flash Data Width
+8
+s
+Flash Topology
+
+s
+Multiboot
+
+s
+Multiboot Bpi Chain
+
+s
+Multiboot Bpi Device
+
+s
+Multiboot Bpi Type
+
+s
+Number of Designs
+1
+i32
+Number of Prom Devices
+1
+i32
+PFFName
+gyua
+s
+PFFPath
+D:\PRG\/
+s
+PFFSize
+512
+s
+Prom 0 name
+xc18v256
+s
+Prom 0 size
+32768
+i32
+RSPin Msb
+
+s
+SPI Selected
+
+s
+Submode
+SERIAL
+s
+Swap Bit
+TRUE
+s
