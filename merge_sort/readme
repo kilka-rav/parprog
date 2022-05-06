@@ -1,0 +1,6 @@
+merge_sort on threads with std::list. 
+_______________________________________
+make
+./run 4(num_threads) 10000(list's size)
+________________________________________
+the data on which I overtook STL::sort ./run 3000 3000000
