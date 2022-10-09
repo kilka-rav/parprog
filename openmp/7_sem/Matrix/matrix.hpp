@@ -27,7 +27,20 @@ namespace linear {
             bool mul(Matrix& right, Matrix& result);          //it is mul first version
             bool mul_thread(const Matrix& right, Matrix& result);
             bool mul_intrinsic(const Matrix& right, Matrix& result);
+            bool strassen(linear::Matrix& D_A, linear::Matrix& D1_A, linear::Matrix& D2_A, \
+                linear::Matrix& H1_A, linear::Matrix& H2_A, linear::Matrix& V1_A, linear::Matrix& V2_A, \
+                linear::Matrix& D_B, linear::Matrix& D1_B, linear::Matrix& D2_B, \
+                linear::Matrix& H1_B, linear::Matrix& H2_B, linear::Matrix& V1_B, linear::Matrix& V2_B, \
+                linear::Matrix& D, linear::Matrix& D1, linear::Matrix& D2, linear::Matrix& H1, \
+                linear::Matrix& H2, linear::Matrix& V1, linear::Matrix& V2, \
+                linear::Matrix& result1, linear::Matrix& result2, linear::Matrix& result3, linear::Matrix& result4, \
+                linear::Matrix& result);
+            void before_calc(linear::Matrix& result, int x1, int x2, int y1, int y2, bool flag);
+            void before_calc(linear::Matrix& result, int x, int y);
             bool compare(const Matrix& B) const;
+            void sum(linear::Matrix& A, linear::Matrix& B, linear::Matrix& result);
+            void sub(linear::Matrix& A, linear::Matrix& B, linear::Matrix& result);
+            void complex_sum_strassen(linear::Matrix& A, linear::Matrix& B, linear::Matrix& C, linear::Matrix& D, linear::Matrix& res);
             void print() const;
             void record(std::string name) const;
             ~Matrix();
@@ -117,6 +130,34 @@ namespace linear {
             delete[] arr[i];
         }
         delete[] arr;
+    }
+
+    void Matrix::sum(linear::Matrix& A, linear::Matrix& B, linear::Matrix& result) {
+        bool flag = A.get_row() == row;
+        bool falg = A.get_col() == col;
+        flag = falg && flag;
+        if ( !flag ) {
+            std::cout << "Incorrect size in sum" << std::endl;
+        }
+        for(int i = 0; i < row; ++i ) {
+            for(int j = 0; j < col; ++j) {
+                result.arr[i][j] = A.arr[i][j] + B.arr[i][j];
+            }
+        }
+    }
+
+    void Matrix::sub(linear::Matrix& A, linear::Matrix& B, linear::Matrix& result) {
+        bool flag = B.get_row() == row;
+        bool falg = B.get_col() == col;
+        flag = falg && flag;
+        if ( !flag ) {
+            std::cout << "Incorrect size in sub" << std::endl;
+        }
+        for(int i = 0; i < row; ++i ) {
+            for(int j = 0; j < col; ++j) {
+                result.arr[i][j] = A.arr[i][j] - B.arr[i][j];
+            }
+        }
     }
 
     void Matrix::print() const {
@@ -337,6 +378,36 @@ namespace linear {
         return true;
     }
 
+    void Matrix::complex_sum_strassen(linear::Matrix& A, linear::Matrix& B, linear::Matrix& C, linear::Matrix& D, linear::Matrix& res) {
+        for(int i = 0; i < row; ++i) {
+            for(int j = 0; j < col; ++j) {
+                res.arr[i][j] = A.arr[i][j] + B.arr[i][j] + C.arr[i][j] - D.arr[i][j];
+            }
+        }
+    }
+
+    bool Matrix::strassen(linear::Matrix& D_A, linear::Matrix& D1_A, linear::Matrix& D2_A, \
+        linear::Matrix& H1_A, linear::Matrix& H2_A, linear::Matrix& V1_A, linear::Matrix& V2_A, \
+        linear::Matrix& D_B, linear::Matrix& D1_B, linear::Matrix& D2_B, \
+        linear::Matrix& H1_B, linear::Matrix& H2_B, linear::Matrix& V1_B, linear::Matrix& V2_B, \
+        linear::Matrix& D, linear::Matrix& D1, linear::Matrix& D2, linear::Matrix& H1, \
+        linear::Matrix& H2, linear::Matrix& V1, linear::Matrix& V2, \
+        linear::Matrix& result1, linear::Matrix& result2, linear::Matrix& result3, linear::Matrix& result4, linear::Matrix& res) {
+            D_A.mul_thread(D_B, D);
+            D1_A.mul_thread(D1_B, D1);
+            D2_A.mul_thread(D2_B, D2);
+            H1_A.mul_thread(H1_B, H1);
+            H2_A.mul_thread(H2_B, H2);
+            V1_A.mul_thread(V1_B, V1);
+            V2_A.mul_thread(V2_B, V2);
+            result1.complex_sum_strassen(D, D1, V1, H1, result1);
+            result4.complex_sum_strassen(D, D2, V2, H2, result4);
+            result2.sum(V2, H1, result2);
+            result3.sum(V1, H2, result3);
+            union_matrix(res, result1, result2, result3, result4);
+            return true;
+        }
+
     bool Matrix::mul(Matrix& right, Matrix& result) {              // Matrix C = A * B;
         if ( col != right.row ) {
             std::cout << "WRONG! Incorrect matrix dimensions are set\n";
@@ -366,5 +437,28 @@ namespace linear {
         }
         return true;
     }
-}
 
+    void Matrix::before_calc(linear::Matrix& result, int x, int y) {
+        int sz = this->get_row() / 2;
+        x = ( x - 1 ) * sz;
+        y = ( y - 1 ) * sz;
+        for(int i = 0; i < sz; ++i) {
+            for(int j = 0; j < sz; ++j) {
+                result.arr[i][j] = arr[i + x][j + y];
+            }
+        }
+    }
+
+    void Matrix::before_calc(linear::Matrix& result, int x1, int x2, int y1, int y2, bool operation) {
+        int sz = this->get_row() / 2;
+        linear::Matrix A(sz, sz);
+        linear::Matrix B(sz, sz);
+        before_calc(A, x1, x2);
+        before_calc(B, y1, y2);
+        if ( operation ) {
+            result.sum(A, B, result);
+            return;
+        }
+        result.sub(A, B, result);
+    }
+} //namespace linear
